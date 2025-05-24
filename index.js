@@ -22,6 +22,9 @@ app.use(session({
 }));
 
 // Routes
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
 app.use('/admin', adminRoutes);
 
 // Server startup
