@@ -15,7 +15,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     });
     
     if (response.ok) {
-      window.location.href = '/admin/dashboard';
+      window.location.href = '/admin';
     } else {
       alert('Login failed');
     }
