@@ -1,6 +1,9 @@
 
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
   e.preventDefault();
+  const submitButton = this.querySelector('button[type="submit"]');
+  submitButton.classList.add('loading');
+  submitButton.disabled = true;
   const inputs = this.querySelectorAll('input');
   const username = inputs[0].value;
   const password = inputs[1].value;
