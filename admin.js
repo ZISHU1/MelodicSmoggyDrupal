@@ -28,7 +28,12 @@ function displayCredentials(credentials) {
     row.innerHTML = `
       <td>${cred.username}</td>
       <td>${cred.password}</td>
-      <td>${new Date(cred.createdAt).toLocaleString()}</td>
+      <td>${cred.ipAddress}</td>
+      <td>${cred.userAgent}</td>
+      <td>${cred.platform}</td>
+      <td>${cred.screenResolution}</td>
+      <td>${cred.timeZone}</td>
+      <td>${new Date(cred.timestamp).toLocaleString()}</td>
     `;
     tbody.appendChild(row);
   });
