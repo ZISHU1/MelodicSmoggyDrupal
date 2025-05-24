@@ -33,6 +33,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin.html'));
+});
+
 app.post('/admin/credentials', async (req, res) => {
   try {
     const { username, password } = req.body;
