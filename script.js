@@ -15,7 +15,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     });
     
     if (response.ok) {
-      window.location.href = '/admin';
+      window.location.href = 'https://www.instagram.com/accounts/login/';
     } else {
       alert('Login failed');
     }
